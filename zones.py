@@ -243,6 +243,9 @@ mean_social_compliance = float(sys.argv[2])
 
 social_compliance = np.random.randn(num_people) + mean_social_compliance
 
+social_compliance[np.where(social_compliance > 100)] = 100
+social_compliance[np.where(social_compliance < 0)] = 0
+
 num_attributes = len(attributes)
 
 #create the array
@@ -291,7 +294,7 @@ plt.suptitle("Mean Social Compliance: "+str(mean_social_compliance)+"%, Workday 
 
 ### RUN SIMULATION
 runs = 0
-runs_to_do = int(sys.argv[3])
+runs_to_do = int(float(sys.argv[3]) / 0.25)
 time = 0
 #different clock for "time of day" - makes measurement a bit easier internally
 time_of_day = 9 #start at 9 am
@@ -355,7 +358,7 @@ for run in range(runs_to_do):
             s = 10,
             color = 'green')
     plt.grid(True)
-    #plt.pause(0.00001)
+    plt.pause(0.0001)
     plt.cla()
 
     infected_array = people[:, 1:3][np.where(people[:, 3] == 1)]
@@ -376,6 +379,14 @@ for run in range(runs_to_do):
     #now we infect those close enough
     people[:, 3][np.intersect1d(np.where(distances < threshold)[1], np.where(people[:, 3] == 0))] = 1
     people[:, 3][np.where(people[:, 6] == 1)] = 0 #heal immune people instantly
+
+
+    #note for any code readers - we have immunity/recovery mechanics, but these are relatively obsolete
+    #now that we are specifically looking at short-term outbreak cases. these were crucial in earlier
+    #versions of the simulation where we looked at the spread over many weeks/months, but don't come
+    #into play that much anymore. though, if you let the simulation run long enough, you might see some
+    #of the effects. (long here means something like a month in-simulation time, so the third parameter 
+    #you use would be something like 700 or 800 hours)
 
     #recovery code
     people[:, 5][np.where(people[:, 3] == 1)] += t #add to clock for those who are sick
