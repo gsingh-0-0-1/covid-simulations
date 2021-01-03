@@ -7,7 +7,6 @@ from scipy.spatial import distance
 from scipy.optimize import curve_fit
 import warnings
 warnings.filterwarnings("ignore")
-
 ### FUNCTIONS
 
 # function to move people
@@ -358,7 +357,7 @@ for run in range(runs_to_do):
             s = 10,
             color = 'green')
     plt.grid(True)
-    plt.pause(0.0001)
+    plt.pause(1)
     plt.cla()
 
     infected_array = people[:, 1:3][np.where(people[:, 3] == 1)]
