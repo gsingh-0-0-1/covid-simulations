@@ -1,3 +1,11 @@
+#* Copyright (C) Gurmehar Singh and Fabian E. Ortega 2020 - All Rights Reserved
+#* Unauthorized copying or distribution of this file, via any medium is strictly prohibited
+#* Proprietary and confidential
+#* Written by Gurmehar Singh <gurmehar@gmail.com> and Fabian E. Ortega
+#*/
+
+
+
 import math
 import numpy as np
 import matplotlib.pyplot as plt
