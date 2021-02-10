@@ -9,3 +9,5 @@ That is, once you're in the directory containing the file.
 The prototype.py file is an old version of the simulation that we used to run initial tests, and only models cluster-based spreading. We've left it in there to show our process, and we will give you the command to run the simulation if you wish, with some basic details.
 
 ```python prototype.py [number of people] [number of clusters to divide people into] [mean recovery rate in days] [mean immunity loss rate in days] [total graph radius] [dispersion factor for individual clusters - larger means more diffuse clusters] [distance threshold for infecting people]```
+
+Here is the link to our paper: https://jhss.scholasticahq.com/article/19426-modeling-sars-cov-2-with-stochastic-simulations.
